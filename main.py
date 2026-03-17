@@ -2,6 +2,8 @@ import pygame
 from logger import log_state
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, PLAYER_TURN_SPEED
 from player import Player
+from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 def main():
     pygame.init()
@@ -14,8 +16,14 @@ def main():
     #Creo i gruppi di sprite pygame su cui poi chiamerò i metodi per draw e update
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    asteroids = pygame.sprite.Group()
     #Aggiungo la classe Player ai due gruppi
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = (updatable)
+
+    #Creo AsteroidField
+    Asteroid_Field = AsteroidField()
 
     #Creo Giocatore
     Player_1 = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)

@@ -23,6 +23,8 @@ class Asteroid(CircleShape):
         
         log_event("asteroid_split")
         angle = random.uniform(20,50)
+        # NB: .rotate è un metodo della classe Vector2 di pygame
+        # non è il metodo .rotate della classe Player 
         new_vel_1 = self.velocity.rotate(angle)
         new_vel_2 = self.velocity.rotate(-angle)
 
